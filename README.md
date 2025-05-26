@@ -1,46 +1,88 @@
-# Getting Started with Create React App
+# Mortgage Refinance Savings Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A user-friendly and interactive application that calculates the monthly savings from a mortgage refinance.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Calculate monthly savings from refinancing your mortgage
+- Calculate total savings over the life of the mortgage (30 years)
+- Option to roll closing costs into the new mortgage
+- Real-time calculation updates as you change inputs
+- Clean, modern UI with responsive design
 
-### `npm start`
+## Inputs
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The calculator takes the following inputs:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Current Mortgage
+- Current mortgage balance
+- Current mortgage rate
+- Origination year of the current mortgage
 
-### `npm test`
+### New Mortgage
+- New mortgage balance
+- New mortgage rate  
+- Origination year of the new mortgage
+- Closing costs
+- Option to roll closing costs into the new mortgage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Outputs
 
-### `npm run build`
+- Monthly savings in dollars
+- Total savings over the life of the mortgage (30 years)
+- Warning if the refinance is not financially beneficial
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js (v14.0.0 or later)
+- npm (v6.0.0 or later)
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/refi-calculator.git
+   cd refi-calculator
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Learn More
+## How the Calculator Works
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The calculator uses the standard amortization formula to calculate monthly payments:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Monthly Payment = (P * r * (1 + r)^n) / ((1 + r)^n - 1)
+
+Where:
+- P = Principal (loan amount)
+- r = Monthly interest rate (annual rate / 12 / 100)
+- n = Total number of payments (years * 12)
+
+For total savings, the calculator:
+1. Computes the difference in monthly payments
+2. Accounts for the remaining term of the current mortgage
+3. Factors in closing costs (either as upfront cost or rolled into the loan)
+4. Accounts for additional payments if the new mortgage extends beyond when the current one would be paid off
+
+## Built With
+
+- [React](https://reactjs.org/) - Frontend library
+- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- [Bootstrap](https://getbootstrap.com/) - CSS framework
+- [React Bootstrap](https://react-bootstrap.github.io/) - Bootstrap components
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

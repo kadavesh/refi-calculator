@@ -1,5 +1,36 @@
+:root {
+  --primary-color: #004d80; /* Deeper blue */
+  --primary-dark: #00264d;
+  --secondary-color: #005a66; /* Deeper teal */
+  --accent-color: #004d40; /* Deep green */
+  --dark-bg: #1A4132; /* Deep, dark green for top banner */
+  --page-bg: #99AC73; /* Main background color */
+  --light-text: #C5D2A8; /* Light green for banner text, lighter than page bg */
+  --box-1-bg: #E9ECCE; /* First box background */
+  --box-2-bg: #CDE9DC; /* Second box background */
+  --box-3-bg: #C4DFE5; /* Third box background */
+  --success-color: #005a45; /* Deep green */
+  --warning-color: #d84315;
+  --danger-color: #b71c1c;
+  --text-dark: #0a1a2a;
+  --text-light: #ffffff;
+  --gray-light: #e0e0e0;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
 .App {
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--page-bg);
 }
 
 .App-logo {
@@ -14,14 +45,24 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background: var(--dark-bg);
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--light-text);
+  margin-bottom: 2.5rem;
+  border-radius: 0 0 25px 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.App-header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .App-link {
@@ -34,5 +75,155 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Explicitly target each box by its position in the grid */
+.container-fluid .row .col-md-4:nth-child(1) .form-container {
+  background-color: var(--box-1-bg);
+}
+
+.container-fluid .row .col-md-4:nth-child(2) .form-container {
+  background-color: var(--box-2-bg);
+}
+
+.container-fluid .row .col-md-4:nth-child(3) .results-container {
+  background-color: var(--box-3-bg);
+}
+
+.form-container, .results-container {
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+  transition: transform 0.2s ease-in-out;
+  height: 100%;
+  border-top: 5px solid var(--primary-dark);
+}
+
+.results-container {
+  border-top: 5px solid var(--accent-color);
+}
+
+.form-container:hover, .results-container:hover {
+  transform: translateY(-3px);
+}
+
+.container-fluid {
+  padding: 0 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.form-control {
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  padding: 10px 15px;
+  transition: all 0.2s;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(0, 77, 128, 0.25);
+  background-color: white;
+}
+
+.form-check-input:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.box-title {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.form-container h2, .results-container h2 {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-align: center;
+  margin: 0;
+}
+
+.savings-highlight {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--success-color);
+}
+
+.total-savings {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.text-danger {
+  color: var(--danger-color) !important;
+}
+
+.alert-warning {
+  background-color: #fff3e0;
+  border-color: var(--warning-color);
+  color: #e65100;
+  border-radius: 8px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.fs-5 {
+  font-size: 1.25rem !important;
+}
+
+.fw-bold {
+  color: var(--primary-dark);
+}
+
+footer {
+  margin-top: auto;
+  padding: 1rem;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  border-radius: 25px 25px 0 0;
+}
+
+@media (min-width: 768px) {
+  .App-header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .container-fluid {
+    padding: 0 15px;
+  }
+  
+  .form-container, .results-container {
+    padding: 20px;
+    height: auto;
   }
 }
